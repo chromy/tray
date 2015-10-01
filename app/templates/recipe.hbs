@@ -1,0 +1,93 @@
+<h1 id="title">I'm making
+    {{content-editable value=model.name
+                       placeholder="Recipe Name"
+                       tagName="span"
+                       class="editable"
+    }}
+</h1>
+
+<div class="lead">
+The recipe is for
+    {{content-editable value=model.makes
+                       placeholder="1"
+                       tagName="span"
+                       class="editable"
+    }}
+but I want to make it for
+    {{content-editable value=model.required
+                       placeholder="2"
+                       tagName="span"
+                       class="editable"
+    }}
+</div>
+
+<div class="row">
+<div class="col-md-6">
+<table class="table lead">
+    <thead>
+      <tr>
+        <th>Original recipe for {{model.makes}}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each model.ingredients as |ingredient|}}
+        <tr>
+            <td>
+              {{content-editable value=ingredient.name
+                                 tagName="span"
+                                 class="editable"
+              }}
+            </td>
+            <td>
+              {{editable-quantity value=ingredient.quantity
+                                 tagName="span"
+                                 class="editable"
+              }}
+            </td>
+        </tr>
+    {{/each}}
+    <tr>
+    <td>
+    <button type="button" class="btn btn-default btn-sm" aria-label="Add ingredient" {{action 'addIngredient'}}>
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add ingredient
+    </button>
+    </td>
+    <td>
+    </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<div class="col-md-6">
+<table class="table lead">
+    <thead>
+      <tr>
+        <th>Updated recipe for {{model.required}}</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each model.ingredients as |ingredient|}}
+        <tr>
+            <td>
+              {{content-editable value=ingredient.name
+                                 tagName="span"
+                                 class="editable"
+              }}
+            </td>
+            <td>{{quantity-scaler quantity=ingredient.quantity multiplier=model.multiplier}}</td>
+            <td><button type="button" class="btn btn-danger btn-xs" {{action 'removeIngredient' ingredient}}>X</button></td>
+        </tr>
+    {{/each}}
+    <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+

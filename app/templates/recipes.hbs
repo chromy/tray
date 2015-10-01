@@ -1,0 +1,7 @@
+<h2 id="title">Welcome to Recipes!</h2>
+
+<ul>
+    {{#each model as |recipe|}}
+      <li>{{#link-to "recipe" recipe}}{{recipe.name}}{{/link-to}}</li>
+    {{/each}}
+</ul>

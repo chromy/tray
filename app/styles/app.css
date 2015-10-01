@@ -1,0 +1,22 @@
+body { 
+    padding-top: 50px; 
+    /* Background from subtlepatterns.com */
+    background-image: url('/assets/images/swirl_pattern.png');
+}
+
+.editable {
+    padding: 2px;
+    color: steelblue;
+    border: solid steelblue 1px;
+    border-width: 1px;
+}
+
+.container {
+    max-width: 730px;
+}
+
+.content {
+    background-color: #fff;
+    height: 100%;
+}
+
