@@ -1,5 +1,5 @@
 <h1 id="title">I'm making
-    {{content-editable value=model.name
+    {{tray-content-editable value=model.name
                        placeholder="Recipe Name"
                        tagName="span"
                        class="editable"
@@ -8,13 +8,13 @@
 
 <div class="lead">
 The recipe is for
-    {{content-editable value=model.makes
+    {{tray-content-editable value=model.makes
                        placeholder="1"
                        tagName="span"
                        class="editable"
     }}
 but I want to make it for
-    {{content-editable value=model.required
+    {{tray-content-editable value=model.required
                        placeholder="2"
                        tagName="span"
                        class="editable"
@@ -34,13 +34,13 @@ but I want to make it for
     {{#each model.ingredients as |ingredient|}}
         <tr>
             <td>
-              {{content-editable value=ingredient.name
+              {{tray-content-editable value=ingredient.name
                                  tagName="span"
-                                 class="editable"
+                                 class="editable ingredientName"
               }}
             </td>
             <td>
-              {{editable-quantity value=ingredient.quantity
+              {{tray-content-editable value=ingredient.quantity
                                  tagName="span"
                                  class="editable"
               }}
@@ -72,10 +72,7 @@ but I want to make it for
     {{#each model.ingredients as |ingredient|}}
         <tr>
             <td>
-              {{content-editable value=ingredient.name
-                                 tagName="span"
-                                 class="editable"
-              }}
+              {{ingredient.name}}
             </td>
             <td>{{quantity-scaler quantity=ingredient.quantity multiplier=model.multiplier}}</td>
             <td><button type="button" class="btn btn-danger btn-xs" {{action 'removeIngredient' ingredient}}>X</button></td>
