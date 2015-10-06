@@ -20,3 +20,16 @@ body {
     height: 100%;
 }
 
+.trayInterface {
+    width: 100%;
+    border: solid 1px black;
+}
+
+svg g .tray {
+    cursor: all-scroll;
+}
+
+svg g .trayHandle {
+    cursor: ew-resize;
+}
+

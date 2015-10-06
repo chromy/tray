@@ -21,6 +21,23 @@ but I want to make it for
     }}
 </div>
 
+
+<ul>
+{{#each model.traysCalledFor as |tray|}}
+    <li>Tray {{tray.x}} {{tray.y}} {{tray.diameter}}</li>
+{{/each}}
+</ul>
+<ul>
+{{#each model.traysDesired as |tray|}}
+    <li>Tray {{tray.x}} {{tray.y}} {{tray.diameter}}</li>
+{{/each}}
+</ul>
+
+{{tray-gui
+    traysCalledFor=model.traysCalledFor
+    traysDesired=model.traysDesired
+}}
+
 <div class="row">
 <div class="col-md-6">
 <table class="table lead">
