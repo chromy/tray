@@ -1,0 +1,31 @@
+<li>
+{{view "select" content=shapes value=tray.type}}
+{{#if tray.isCircle}}
+Diameter:
+{{tray-content-editable value=tray.diameter
+                        tagName="span"
+                        class="editable"
+}}
+{{else if tray.isSquare}}
+Size:
+{{tray-content-editable value=tray.size
+                        tagName="span"
+                        class="editable"
+}}
+{{else if tray.isRectangle}}
+Width:
+{{tray-content-editable value=tray.width
+                        tagName="span"
+                        class="editable"
+}}
+Height:
+{{tray-content-editable value=tray.height
+                        tagName="span"
+                        class="editable"
+}}
+{{else}}
+ Unknown Tray type.
+{{/if}}
+Area: {{tray.area}}
+</li>
+

@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-    max-width: 730px;
+    max-width: 960px;
 }
 
 .content {
@@ -31,5 +31,11 @@ svg g .tray {
 
 svg g .trayHandle {
     cursor: ew-resize;
+}
+
+#togglebutton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 

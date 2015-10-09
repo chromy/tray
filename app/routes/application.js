@@ -2,15 +2,14 @@ export default Ember.Route.extend({
   model() {
     this.store.push('tray', {
         id: 1,
-        x: 10,
-        y: 10,
-        diameter: 40
+        type: "Circular",
+        diameter: "5",
     });
     this.store.push('tray', {
         id: 2,
-        x: 100,
-        y: 100,
-        diameter: 20
+        type: "Rectanglar",
+        width: "5",
+        height: "5",
     });
     this.store.push('ingredient', {
         id: 1,

@@ -1,7 +1,21 @@
 import DS from 'ember-data';
 
 export default Ember.Controller.extend({
+  inAreaMode: true,
+
+  multiplier: Ember.computed('inAreaMode', 'model.trayMultiplier', 'model.makesMultiplier', function() {
+      if (this.get('inAreaMode')) {
+        return this.get('model.trayMultiplier');
+      } else {
+        return this.get('model.makesMultiplier');
+      }
+  }),
+
   actions: {
+    toggleMode() {
+      this.toggleProperty('inAreaMode');
+    },
+
     addIngredient() {
         this.store.createRecord('ingredient', {
             name: '',

@@ -1,3 +1,5 @@
+<div class="row">
+<div class="col-md-6">
 <h1 id="title">I'm making
     {{tray-content-editable value=model.name
                        placeholder="Recipe Name"
@@ -5,7 +7,39 @@
                        class="editable"
     }}
 </h1>
+</div>
+<div class="col-md-6">
+<button type="button"
+        id="togglebutton"
+        class="btn btn-default btn-sm"
+        {{action 'toggleMode'}}>
+{{#if inAreaMode }}
+    But my recipe doesn't use a tray/dish/tin!
+{{else}}
+    But my recipe uses a tray/dish/tin!
+{{/if}}
+</button>
+</div>
+</div>
 
+{{#if inAreaMode }}
+<div class="row">
+<div class="col-md-6">
+<ul>
+{{#each model.traysCalledFor as |tray|}}
+    {{tray-editor tray=tray}}
+{{/each}}
+</ul>
+</div>
+<div class="col-md-6">
+<ul>
+{{#each model.traysDesired as |tray|}}
+    {{tray-editor tray=tray}}
+{{/each}}
+</ul>
+</div>
+</div>
+{{else}}
 <div class="lead">
 The recipe is for
     {{tray-content-editable value=model.makes
@@ -20,30 +54,18 @@ but I want to make it for
                        class="editable"
     }}
 </div>
-
-
-<ul>
-{{#each model.traysCalledFor as |tray|}}
-    <li>Tray {{tray.x}} {{tray.y}} {{tray.diameter}}</li>
-{{/each}}
-</ul>
-<ul>
-{{#each model.traysDesired as |tray|}}
-    <li>Tray {{tray.x}} {{tray.y}} {{tray.diameter}}</li>
-{{/each}}
-</ul>
-
-{{tray-gui
-    traysCalledFor=model.traysCalledFor
-    traysDesired=model.traysDesired
-}}
+{{/if}}
 
 <div class="row">
 <div class="col-md-6">
 <table class="table lead">
     <thead>
       <tr>
+        {{#if inAreaMode }}
+        <th>Original recipe makes {{model.traysCalledForArea}}</th>
+        {{else}}
         <th>Original recipe for {{model.makes}}</th>
+        {{/if}}
         <th></th>
       </tr>
     </thead>
@@ -80,7 +102,11 @@ but I want to make it for
 <table class="table lead">
     <thead>
       <tr>
+        {{#if inAreaMode}}
+        <th>Updated recipe makes {{model.traysDesiredArea}}</th>
+        {{else}}
         <th>Updated recipe for {{model.required}}</th>
+        {{/if}}
         <th></th>
         <th></th>
       </tr>
@@ -91,7 +117,7 @@ but I want to make it for
             <td>
               {{ingredient.name}}
             </td>
-            <td>{{quantity-scaler quantity=ingredient.quantity multiplier=model.multiplier}}</td>
+            <td>{{quantity-scaler quantity=ingredient.quantity multiplier=multiplier}}</td>
             <td><button type="button" class="btn btn-danger btn-xs" {{action 'removeIngredient' ingredient}}>X</button></td>
         </tr>
     {{/each}}
